@@ -8,10 +8,11 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as RoutingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends Controller
+class AuthController extends RoutingController
 {
     public function login(LoginRequest $request)
     {
@@ -62,5 +63,20 @@ class AuthController extends Controller
             ], 500);
         }
     }
-    public function logout() {}
+    public function logout(Request $request) {
+
+        try{
+            $request->user()->currentAccessToken()->delete();
+
+            return response()->json([
+                'message' => 'Berhasil Logout',
+                'data' => null
+            ], 200);
+        }catch (Exception $e){
+            return response()->json([
+                'messege' => $e->getMessage(),
+                'data'=> null
+            ], 500);
+        }
+    }
 }
