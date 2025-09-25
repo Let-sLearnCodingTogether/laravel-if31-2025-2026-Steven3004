@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Spot;
 use App\Models\spots;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('kategori', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(spots::class);
+            $table->foreignIdFor(Spot::class);
             $table->string('category');
             $table->timestamps();
             $table->softDeletes();

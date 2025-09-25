@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Spot;
 use App\Models\spots;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -15,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignIDFor(spots::class);
+            $table->foreignIDFor(Spot::class);
             $table->foreignIdFor(User::class);
             $table->text('content');
             $table->integer('rating')->unsigned()->default(5);

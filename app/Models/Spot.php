@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class spots extends Model
+class Spot extends Model
 {
-    use SoftDeletes;
+  use SoftDeletes;
 
     protected $fillable = [
         'user_id',
@@ -20,6 +20,4 @@ class spots extends Model
 
         return $this->belongsTo(User::class);
     }
-
-
 }
