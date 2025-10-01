@@ -101,8 +101,28 @@ class spotController extends Controller
                 'data' => null
             ], 500);
         }
+
+
+
+
     }
 
+    public function review(Spot $spot){
+
+        try{
+            return Response::json([
+                'message' => 'List Review',
+                'data' => $spot->reviews()->with([
+                    'user:id,nama'
+                ])->get()
+                ], 200);
+        }catch (Exception $e) {
+            return Response::json([
+                'message' => $e->getMessage(),
+                'data' => null
+            ],500);
+        }
+    }
 }
 
 

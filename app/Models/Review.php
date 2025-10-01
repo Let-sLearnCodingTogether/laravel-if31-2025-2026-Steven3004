@@ -10,9 +10,13 @@ class Review extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id',
         'spot_id',
+        'user_id',
         'content',
         'rating'
     ];
+
+    public function spot(){
+        return $this->belongsTo(Spot::class);
+    }
 }
